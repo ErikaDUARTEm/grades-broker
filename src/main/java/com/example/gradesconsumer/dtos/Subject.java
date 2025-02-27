@@ -1,8 +1,6 @@
-package com.example.gradespublisher.dtos;
+package com.example.gradesconsumer.dtos;
 
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;

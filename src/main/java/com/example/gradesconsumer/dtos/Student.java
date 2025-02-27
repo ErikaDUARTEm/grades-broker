@@ -1,4 +1,4 @@
-package com.example.gradespublisher.dtos;
+package com.example.gradesconsumer.dtos;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;

@@ -1,13 +1,13 @@
-package com.example.gradespublisher;
+package com.example.gradesconsumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GradesPublisherApplication {
+public class GradesConsumerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GradesPublisherApplication.class, args);
+		SpringApplication.run(GradesConsumerApplication.class, args);
 	}
 
 }

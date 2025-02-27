@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: grades
+  rabbitmq:
+    addresses: ${RABBIT_URI}
+
+rabbitmq:
+  queue: grades_queue

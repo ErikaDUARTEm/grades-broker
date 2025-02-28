@@ -1,0 +1,14 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: grades
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+
+  rabbitmq:
+    addresses: ${RABBIT_URI}
+
+rabbitmq:
+  queue: grades_queue

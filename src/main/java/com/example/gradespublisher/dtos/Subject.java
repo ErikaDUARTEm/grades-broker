@@ -15,9 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Subject {
   private String name;
-  @Valid
-  @NotEmpty(message = "La lista de notas no puede estar vacía")
-  private List<Grade> grades;
+  private List<Double> grades;
   private Double average;
   private String state;
 }

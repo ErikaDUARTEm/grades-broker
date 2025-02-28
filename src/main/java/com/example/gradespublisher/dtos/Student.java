@@ -18,7 +18,6 @@ public class Student {
   @Min(value = 1, message = "EL grado mínima es 1")
   @Max(value = 11, message = "El grado máximo es 11")
   private Integer grade;
-  @Valid
   private List<Subject> subjects;
   private Double average;
   private String state;

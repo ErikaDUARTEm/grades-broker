@@ -1,11 +1,11 @@
 package com.example.gradespublisher.publishers;
 
-import com.example.gradespublisher.dtos.Grade;
 import com.example.gradespublisher.dtos.Student;
 import com.example.gradespublisher.dtos.Subject;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 @Service
 public class StudentPublisher {
@@ -19,6 +19,11 @@ public class StudentPublisher {
   }
   
   public Student publishStudent(Student student) {
+    student.getSubjects().forEach(subject -> subject.getGrades().forEach(grade -> {
+      if(grade < 1.0 || grade > 5.0) {
+        throw new IllegalArgumentException("La nota no puede ser menor a 1 o mayor a 5");
+      }
+    }));
     calculateGradePointAverage(student);
 
     calculateSubjectPointAverage(student);
@@ -29,7 +34,7 @@ public class StudentPublisher {
 
   private void calculateGradePointAverage(Student student) {
     student.getSubjects().forEach(subject -> {
-      double average = subject.getGrades().stream().mapToDouble(Grade::getValue).sum() / student.getSubjects().size();
+      double average = subject.getGrades().stream().mapToDouble(Double::doubleValue).sum() / subject.getGrades().size();
       subject.setAverage(Math.round(average * 100.0) / 100.0);
       if(subject.getAverage() >= 3.0) {
         subject.setState("Materia aprobada");

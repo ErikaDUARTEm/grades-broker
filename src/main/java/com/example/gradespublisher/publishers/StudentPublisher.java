@@ -5,7 +5,6 @@ import com.example.gradespublisher.dtos.Subject;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 
 @Service
 public class StudentPublisher {
@@ -25,7 +24,6 @@ public class StudentPublisher {
       }
     }));
     calculateGradePointAverage(student);
-
     calculateSubjectPointAverage(student);
 
     rabbitTemplate.convertAndSend(queue, student);
